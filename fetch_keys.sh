@@ -1,5 +1,6 @@
 #!/bin/bash
-FILE="/root/hackathon-local-ssh-public-keys/hackathon-2025.txt"
+ROOT="/root/hackathon-local-ssh-public-keys"
+FILE="$ROOT/hackathon-2025.txt"
 EMAIL="sascha@rommelfangen.de"
 ARGC=$#
 if [[ $ARGC == 0 ]]
@@ -19,7 +20,8 @@ then
 		echo "Please install missing software. Required software is:\n$COMMANDS"
 		exit 1
 	fi
-
+ 
+	cd $ROOT
 	git pull
 	if ! ssh-keygen -l -f $FILE 2>&1 >/dev/null
 	then
