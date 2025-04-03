@@ -21,10 +21,10 @@ As root, clone this repository to `/root` directory
 
 Add to `/etc/ssh/sshd_config`:
 ```
-AuthorizedKeysCommand /root/hackathon-local-ssh-public-keys/fetch_keys.sh
+AuthorizedKeysCommand /bin/bash /root/hackathon-local-ssh-public-keys/fetch_keys.sh
 AuthorizedKeysCommandUser root
 ```
 Now restart sshd:`systemctl restart ssh`
 
 Edit your crontab: `crontab -e`
-`* * * * * /root/hackathon-local-ssh-public-keys/fetch_keys.sh insert`
+`* * * * * /bin/bash /root/hackathon-local-ssh-public-keys/fetch_keys.sh insert`
